@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 33% 6%;
+    --foreground: 210 40% 98%;
+    --card: 215 26% 9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 216 22% 13%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 216 22% 13%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 218 24% 16%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 213 27% 19%;
+    --input: 213 27% 19%;
+    --ring: 221 83% 60%;
+    --chart-1: 221 83% 60%;
+    --chart-2: 190 80% 55%;
+    --chart-3: 43 90% 60%;
+    --chart-4: 265 70% 65%;
+    --chart-5: 340 75% 62%;
+    --radius: 0.9rem;
+    --font-heading: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    --sidebar-background: 216 30% 7%;
+    --sidebar-foreground: 210 30% 92%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 218 26% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 213 27% 16%;
+    --sidebar-ring: 221 83% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, hsl(221 83% 53% / 0.14), transparent 70%),
+      radial-gradient(700px 500px at 5% 110%, hsl(200 90% 50% / 0.08), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(221 83% 53% / 0.35);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(213 27% 22%);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(213 27% 30%);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-border/80 bg-card/80 backdrop-blur-sm;
+  }
+
+  .panel-title {
+    @apply font-heading text-lg font-semibold text-foreground;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground;
+  }
+
+  .starfield {
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, hsl(0 0% 100% / 0.55), transparent 100%),
+      radial-gradient(1px 1px at 70% 15%, hsl(0 0% 100% / 0.35), transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 70%, hsl(0 0% 100% / 0.4), transparent 100%),
+      radial-gradient(1px 1px at 85% 60%, hsl(0 0% 100% / 0.3), transparent 100%),
+      radial-gradient(1px 1px at 10% 85%, hsl(0 0% 100% / 0.35), transparent 100%);
+  }
+}
+
+@keyframes pulse-warn {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.animate-pulse-warn {
+  animation: pulse-warn 1.4s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
