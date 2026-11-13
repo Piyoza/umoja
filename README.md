@@ -356,4 +356,3 @@ To create a fully independent, secure, maintainable, and collaborative Junior As
 **One repository. One shared codebase. One team. One mission.** 🚀
 
 Repository: `YOUR_GITHUB_REPOSITORY_URL`
-
