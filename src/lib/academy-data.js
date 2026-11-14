@@ -419,6 +419,40 @@ export const ACADEMY_MODULES = [
       },
     ],
   },
+
+{
+  
+  id: "human-body-space",
+  title: "The Human Body in Space",
+  summary: "Discover how microgravity changes the human body through an interactive narrated 360-degree anatomy lesson.",
+  lessons: [
+    {
+      id: "body-space-1",
+      title: "What Happens to Your Body in Space?",
+      minutes: 12,
+
+      // This tells the lesson page which 3D component to render.
+      component: "BodyInSpace3D",
+      interactive: true,
+
+      body: [
+        "Space is an extraordinary environment. Without Earth's normal gravitational loading, the human body begins to adapt.",
+        "Fluids shift toward the upper body, muscles and bones experience less loading, and the balance system must adapt to microgravity.",
+        "Astronauts follow exercise programmes and medical monitoring to help manage these changes."
+      ],
+
+      keyPoints: [
+        "Microgravity causes fluids to shift toward the head.",
+        "Bones can lose density during long-duration spaceflight.",
+        "Muscles weaken without regular exercise and loading.",
+        "The balance system adapts to a new environment.",
+        "Astronauts use exercise and medical monitoring to protect their health."
+      ]
+    }
+  ]
+},
+
+
 ];
 
 export const ALL_LESSONS = ACADEMY_MODULES.flatMap((module) =>

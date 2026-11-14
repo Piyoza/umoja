@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import AstraChat from "@/components/astra/AstraChat";
 import { ALL_LESSONS, getLesson, getModule } from "@/lib/academy-data";
 import { recordLesson } from "@/lib/progress";
+import BodyInSpace3D from "@/components/academy/BodyInSpace3D";
+
 
 export const Route = createFileRoute("/_authed/academy/$lessonId")({
   component: LessonPage,
@@ -61,6 +63,11 @@ function LessonPage() {
               </p>
             ))}
           </div>
+        {lesson.component === "BodyInSpace3D" && (
+  <div className="mt-6 w-full">
+    <BodyInSpace3D />
+  </div>
+)}
 
           <div className="mt-5 rounded-xl border border-primary/25 bg-primary/10 p-4">
             <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-primary">
