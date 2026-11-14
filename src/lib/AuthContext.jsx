@@ -57,6 +57,7 @@ export function AuthProvider({ children }) {
 
       logout: async () => {
         await signOut(auth);
+        window.location.assign("/welcome"); 
       },
 
       navigateToLogin: () => {

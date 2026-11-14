@@ -15,6 +15,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as MfaRouteImport } from './routes/mfa'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as WelcomeRouteImport } from './routes/welcome'
 import { Route as AuthedIndexRouteImport } from './routes/_authed/index'
 import { Route as AuthedAchievementsRouteImport } from './routes/_authed/achievements'
 import { Route as AuthedAdminRouteImport } from './routes/_authed/admin'
@@ -59,6 +60,11 @@ const RegisterRoute = RegisterRouteImport.update({
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WelcomeRoute = WelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthedIndexRoute = AuthedIndexRouteImport.update({
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/mfa': typeof MfaRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/welcome': typeof WelcomeRoute
   '/achievements': typeof AuthedAchievementsRoute
   '/admin': typeof AuthedAdminRoute
   '/progress': typeof AuthedProgressRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByTo {
   '/mfa': typeof MfaRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/welcome': typeof WelcomeRoute
   '/achievements': typeof AuthedAchievementsRoute
   '/admin': typeof AuthedAdminRoute
   '/progress': typeof AuthedProgressRoute
@@ -202,6 +210,7 @@ export interface FileRoutesById {
   '/mfa': typeof MfaRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/welcome': typeof WelcomeRoute
   '/_authed/achievements': typeof AuthedAchievementsRoute
   '/_authed/admin': typeof AuthedAdminRoute
   '/_authed/progress': typeof AuthedProgressRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
     | '/mfa'
     | '/register'
     | '/reset-password'
+    | '/welcome'
     | '/achievements'
     | '/admin'
     | '/progress'
@@ -250,6 +260,7 @@ export interface FileRouteTypes {
     | '/mfa'
     | '/register'
     | '/reset-password'
+    | '/welcome'
     | '/achievements'
     | '/admin'
     | '/progress'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/mfa'
     | '/register'
     | '/reset-password'
+    | '/welcome'
     | '/_authed/achievements'
     | '/_authed/admin'
     | '/_authed/progress'
@@ -299,6 +311,7 @@ export interface RootRouteChildren {
   MfaRoute: typeof MfaRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
+  WelcomeRoute: typeof WelcomeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -343,6 +356,13 @@ declare module '@tanstack/react-router' {
       path: '/reset-password'
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/welcome': {
+      id: '/welcome'
+      path: '/welcome'
+      fullPath: '/welcome'
+      preLoaderRoute: typeof WelcomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authed/': {
@@ -508,6 +528,7 @@ const rootRouteChildren: RootRouteChildren = {
   MfaRoute: MfaRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,
+  WelcomeRoute: WelcomeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
