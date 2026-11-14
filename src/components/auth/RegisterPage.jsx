@@ -12,6 +12,7 @@ import { AuthError, AuthLink, SubmitButton } from "@/components/auth/parts";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { safeReturnTo } from "@/lib/authReturnTo";
+import { ensureUserProfile } from "@/lib/user-profile";
 
 export function RegisterPage() {
   const returnTo = safeReturnTo();
@@ -36,12 +37,15 @@ export function RegisterPage() {
 
     try {
       const credential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+  auth,
+  email,
+  password
+);
 
-      await sendEmailVerification(credential.user);
+// Create the learner's permanent Firestore profile.
+await ensureUserProfile(credential.user);
+
+await sendEmailVerification(credential.user);
       setSent(true);
     } catch (err) {
       setError(err.message || "Registration failed");

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/lib/AuthContext";
+import { saveUserProfile } from "@/lib/user-profile";
 
 export const Route = createFileRoute("/_authed/settings")({
   component: SettingsPage,
@@ -34,8 +35,15 @@ function SettingsPage() {
       }
 
       await updateProfile(auth.currentUser, { displayName });
-      await refresh();
-      setStatus("Profile updated.");
+
+await saveUserProfile(auth.currentUser, {
+  displayName,
+});
+
+await refresh();
+
+setName(displayName);
+setStatus("Profile updated.");
     } catch (error) {
       console.error("Profile update failed:", error);
       setStatus("Could not save your profile. Please try again.");

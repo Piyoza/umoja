@@ -1,3 +1,4 @@
+
 import {
   createContext,
   useContext,
@@ -13,37 +14,81 @@ import {
 } from "firebase/auth";
 
 import { auth } from "@/lib/firebase";
+import { ensureUserProfile } from "@/lib/user-profile";
 
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [isLoadingAuth, setIsLoadingAuth] = useState(true);
   const [authError, setAuthError] = useState(null);
 
   useEffect(() => {
+    let active = true;
+
     const unsubscribe = onAuthStateChanged(
       auth,
-      (firebaseUser) => {
+      async (firebaseUser) => {
+        if (!active) return;
+
         setUser(firebaseUser);
+        setProfile(null);
         setAuthError(null);
-        setIsLoadingAuth(false);
+
+        if (!firebaseUser) {
+          setIsLoadingAuth(false);
+          return;
+        }
+
+        setIsLoadingAuth(true);
+
+        try {
+          const savedProfile = await ensureUserProfile(firebaseUser);
+
+          if (
+            active &&
+            auth.currentUser?.uid === firebaseUser.uid
+          ) {
+            setProfile(savedProfile);
+          }
+        } catch (error) {
+          console.error("Could not restore learner profile:", error);
+
+          if (active) {
+            setAuthError({
+              type: "profile",
+              message: "Could not load your saved profile.",
+            });
+          }
+        } finally {
+          if (active) {
+            setIsLoadingAuth(false);
+          }
+        }
       },
       (error) => {
+        if (!active) return;
+
         setAuthError({
           type: "unknown",
           message: error.message ?? "Failed to load session",
         });
+
         setIsLoadingAuth(false);
       }
     );
 
-    return unsubscribe;
+    return () => {
+      active = false;
+      unsubscribe();
+    };
   }, []);
 
   const value = useMemo(
     () => ({
       user,
+      profile,
       isAuthenticated: !!user,
       isLoadingAuth,
       authError,
@@ -51,20 +96,25 @@ export function AuthProvider({ children }) {
       refresh: async () => {
         if (auth.currentUser) {
           await reload(auth.currentUser);
-          setUser(auth.currentUser);
+
+          const currentUser = auth.currentUser;
+          setUser(currentUser);
+
+          const savedProfile = await ensureUserProfile(currentUser);
+          setProfile(savedProfile);
         }
       },
 
       logout: async () => {
         await signOut(auth);
-        window.location.assign("/welcome"); 
+        window.location.assign("/welcome");
       },
 
       navigateToLogin: () => {
         window.location.assign("/login");
       },
     }),
-    [user, isLoadingAuth, authError]
+    [user, profile, isLoadingAuth, authError]
   );
 
   return (

@@ -24,6 +24,9 @@ import { Route as AuthedSettingsRouteImport } from './routes/_authed/settings'
 import { Route as AuthedSimulationRouteImport } from './routes/_authed/simulation'
 import { Route as AuthedAcademyIndexRouteImport } from './routes/_authed/academy/index'
 import { Route as AuthedAcademyLessonIdRouteImport } from './routes/_authed/academy/$lessonId'
+import { Route as AuthedGamesHumansInSpaceRouteImport } from './routes/_authed/games/humans-in-space'
+import { Route as AuthedGamesMoonbaseRouteImport } from './routes/_authed/games/moonbase'
+import { Route as AuthedGamesSpaceTravelHazardsRouteImport } from './routes/_authed/games/space-travel-hazards'
 import { Route as AuthedSimulatorIndexRouteImport } from './routes/_authed/simulator/index'
 import { Route as AuthedSimulatorScenarioIdRouteImport } from './routes/_authed/simulator/$scenarioId'
 import { Route as AuthedSolarSystemIndexRouteImport } from './routes/_authed/solar-system/index'
@@ -107,6 +110,23 @@ const AuthedAcademyLessonIdRoute = AuthedAcademyLessonIdRouteImport.update({
   path: '/academy/$lessonId',
   getParentRoute: () => AuthedRoute,
 } as any)
+const AuthedGamesHumansInSpaceRoute =
+  AuthedGamesHumansInSpaceRouteImport.update({
+    id: '/games/humans-in-space',
+    path: '/games/humans-in-space',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedGamesMoonbaseRoute = AuthedGamesMoonbaseRouteImport.update({
+  id: '/games/moonbase',
+  path: '/games/moonbase',
+  getParentRoute: () => AuthedRoute,
+} as any)
+const AuthedGamesSpaceTravelHazardsRoute =
+  AuthedGamesSpaceTravelHazardsRouteImport.update({
+    id: '/games/space-travel-hazards',
+    path: '/games/space-travel-hazards',
+    getParentRoute: () => AuthedRoute,
+  } as any)
 const AuthedSimulatorIndexRoute = AuthedSimulatorIndexRouteImport.update({
   id: '/simulator/',
   path: '/simulator/',
@@ -168,6 +188,9 @@ export interface FileRoutesByFullPath {
   '/settings': typeof AuthedSettingsRoute
   '/simulation': typeof AuthedSimulationRoute
   '/academy/$lessonId': typeof AuthedAcademyLessonIdRoute
+  '/games/humans-in-space': typeof AuthedGamesHumansInSpaceRoute
+  '/games/moonbase': typeof AuthedGamesMoonbaseRoute
+  '/games/space-travel-hazards': typeof AuthedGamesSpaceTravelHazardsRoute
   '/simulator/$scenarioId': typeof AuthedSimulatorScenarioIdRoute
   '/solar-system/compare': typeof AuthedSolarSystemCompareRoute
   '/solar-system/gravity': typeof AuthedSolarSystemGravityRoute
@@ -192,6 +215,9 @@ export interface FileRoutesByTo {
   '/simulation': typeof AuthedSimulationRoute
   '/': typeof AuthedIndexRoute
   '/academy/$lessonId': typeof AuthedAcademyLessonIdRoute
+  '/games/humans-in-space': typeof AuthedGamesHumansInSpaceRoute
+  '/games/moonbase': typeof AuthedGamesMoonbaseRoute
+  '/games/space-travel-hazards': typeof AuthedGamesSpaceTravelHazardsRoute
   '/simulator/$scenarioId': typeof AuthedSimulatorScenarioIdRoute
   '/solar-system/compare': typeof AuthedSolarSystemCompareRoute
   '/solar-system/gravity': typeof AuthedSolarSystemGravityRoute
@@ -218,6 +244,9 @@ export interface FileRoutesById {
   '/_authed/simulation': typeof AuthedSimulationRoute
   '/_authed/': typeof AuthedIndexRoute
   '/_authed/academy/$lessonId': typeof AuthedAcademyLessonIdRoute
+  '/_authed/games/humans-in-space': typeof AuthedGamesHumansInSpaceRoute
+  '/_authed/games/moonbase': typeof AuthedGamesMoonbaseRoute
+  '/_authed/games/space-travel-hazards': typeof AuthedGamesSpaceTravelHazardsRoute
   '/_authed/simulator/$scenarioId': typeof AuthedSimulatorScenarioIdRoute
   '/_authed/solar-system/compare': typeof AuthedSolarSystemCompareRoute
   '/_authed/solar-system/gravity': typeof AuthedSolarSystemGravityRoute
@@ -244,6 +273,9 @@ export interface FileRouteTypes {
     | '/settings'
     | '/simulation'
     | '/academy/$lessonId'
+    | '/games/humans-in-space'
+    | '/games/moonbase'
+    | '/games/space-travel-hazards'
     | '/simulator/$scenarioId'
     | '/solar-system/compare'
     | '/solar-system/gravity'
@@ -268,6 +300,9 @@ export interface FileRouteTypes {
     | '/simulation'
     | '/'
     | '/academy/$lessonId'
+    | '/games/humans-in-space'
+    | '/games/moonbase'
+    | '/games/space-travel-hazards'
     | '/simulator/$scenarioId'
     | '/solar-system/compare'
     | '/solar-system/gravity'
@@ -293,6 +328,9 @@ export interface FileRouteTypes {
     | '/_authed/simulation'
     | '/_authed/'
     | '/_authed/academy/$lessonId'
+    | '/_authed/games/humans-in-space'
+    | '/_authed/games/moonbase'
+    | '/_authed/games/space-travel-hazards'
     | '/_authed/simulator/$scenarioId'
     | '/_authed/solar-system/compare'
     | '/_authed/solar-system/gravity'
@@ -421,6 +459,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthedAcademyLessonIdRouteImport
       parentRoute: typeof AuthedRoute
     }
+    '/_authed/games/humans-in-space': {
+      id: '/_authed/games/humans-in-space'
+      path: '/games/humans-in-space'
+      fullPath: '/games/humans-in-space'
+      preLoaderRoute: typeof AuthedGamesHumansInSpaceRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/games/moonbase': {
+      id: '/_authed/games/moonbase'
+      path: '/games/moonbase'
+      fullPath: '/games/moonbase'
+      preLoaderRoute: typeof AuthedGamesMoonbaseRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/games/space-travel-hazards': {
+      id: '/_authed/games/space-travel-hazards'
+      path: '/games/space-travel-hazards'
+      fullPath: '/games/space-travel-hazards'
+      preLoaderRoute: typeof AuthedGamesSpaceTravelHazardsRouteImport
+      parentRoute: typeof AuthedRoute
+    }
     '/_authed/simulator/': {
       id: '/_authed/simulator/'
       path: '/simulator'
@@ -488,6 +547,9 @@ interface AuthedRouteChildren {
   AuthedSimulationRoute: typeof AuthedSimulationRoute
   AuthedIndexRoute: typeof AuthedIndexRoute
   AuthedAcademyLessonIdRoute: typeof AuthedAcademyLessonIdRoute
+  AuthedGamesHumansInSpaceRoute: typeof AuthedGamesHumansInSpaceRoute
+  AuthedGamesMoonbaseRoute: typeof AuthedGamesMoonbaseRoute
+  AuthedGamesSpaceTravelHazardsRoute: typeof AuthedGamesSpaceTravelHazardsRoute
   AuthedSimulatorScenarioIdRoute: typeof AuthedSimulatorScenarioIdRoute
   AuthedSolarSystemCompareRoute: typeof AuthedSolarSystemCompareRoute
   AuthedSolarSystemGravityRoute: typeof AuthedSolarSystemGravityRoute
@@ -507,6 +569,9 @@ const AuthedRouteChildren: AuthedRouteChildren = {
   AuthedSimulationRoute: AuthedSimulationRoute,
   AuthedIndexRoute: AuthedIndexRoute,
   AuthedAcademyLessonIdRoute: AuthedAcademyLessonIdRoute,
+  AuthedGamesHumansInSpaceRoute: AuthedGamesHumansInSpaceRoute,
+  AuthedGamesMoonbaseRoute: AuthedGamesMoonbaseRoute,
+  AuthedGamesSpaceTravelHazardsRoute: AuthedGamesSpaceTravelHazardsRoute,
   AuthedSimulatorScenarioIdRoute: AuthedSimulatorScenarioIdRoute,
   AuthedSolarSystemCompareRoute: AuthedSolarSystemCompareRoute,
   AuthedSolarSystemGravityRoute: AuthedSolarSystemGravityRoute,
