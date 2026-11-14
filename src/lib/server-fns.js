@@ -2,18 +2,18 @@
 import { createServerFn } from "@tanstack/react-start";
 
 async function askAI(system, prompt) {
-  const apiKey = process.env.OPENAI_API_KEY;
+  const apiKey = process.env.GROK_API_KEY;
 
   if (!apiKey) return null;
 
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+  const response = await fetch("https://api.x.ai/v1/chat/completions", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: process.env.OPENAI_MODEL || "gpt-4o-mini",
+      model: process.env.GROK_MODEL || "grok-3-mini",
       messages: [
         { role: "system", content: system },
         { role: "user", content: prompt },
@@ -23,6 +23,7 @@ async function askAI(system, prompt) {
   });
 
   if (!response.ok) {
+    console.error("Grok API error:", response.status, await response.text());
     throw new Error("The AI service could not complete the request.");
   }
 
