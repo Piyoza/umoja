@@ -455,6 +455,313 @@ export const ACADEMY_MODULES = [
 
 ];
 
+export const ACADEMY_RESOURCES = {
+  "life-support": [
+    {
+      id: "nasa-eclss",
+      title: "Environmental Control and Life Support Systems",
+      type: "pdf",
+      description: "NASA explains oxygen generation, air cleaning, water recovery and cabin environmental control.",
+      url: "https://www.nasa.gov/wp-content/uploads/2022/06/508318main_iss_ref_guide_nov2010.pdf",
+      source: "NASA",
+      audience: "Grades 6–12 and independent learners",
+    },
+    {
+      id: "nasa-eclss-reference",
+      title: "Environmental Control and Life Support Systems",
+      type: "article",
+      description: "Explore how the ISS recycles water, removes carbon dioxide and produces oxygen.",
+      url: "https://www.nasa.gov/reference/environmental-control-and-life-support-systems-eclss/",
+      source: "NASA",
+      audience: "All learners",
+    },
+  ],
+
+  "pressure-atmosphere": [
+    {
+      id: "nasa-pressure-video",
+      title: "Is There Pressure in Outer Space?",
+      type: "video",
+      description: "A NASA scientist explains pressure in the space environment.",
+      url: "https://science.nasa.gov/eclips/videos/is-there-pressure-in-outer-space/",
+      source: "NASA eClips",
+      audience: "All learners",
+    },
+    {
+      id: "nasa-pressure-activity",
+      title: "Dressing for Altitude: Why Do We Need Pressure Suits?",
+      type: "pdf",
+      description: "Hands-on lessons about pressure, gases, vacuum and protective suits.",
+      url: "https://www.nasa.gov/stem-content/dressing-for-altitude-why-do-we-really-need-pressure-suits/",
+      source: "NASA STEM",
+      audience: "Grades 5–12",
+    },
+  ],
+
+  "power-systems": [
+    {
+      id: "nasa-solar-energy",
+      title: "STEMonstrations: Solar Energy",
+      type: "video",
+      description: "An astronaut explains how solar arrays provide energy to the International Space Station.",
+      url: "https://www.nasa.gov/stem-content/stemonstrations-solar-energy/",
+      source: "NASA STEM",
+      audience: "Grades 9–12",
+    },
+    {
+      id: "nasa-iss-power-pdf",
+      title: "International Space Station Reference Guide: Electrical Power",
+      type: "pdf",
+      description: "Technical diagrams and explanations of solar arrays, batteries and electrical distribution.",
+      url: "https://www.nasa.gov/wp-content/uploads/2022/06/508318main_iss_ref_guide_nov2010.pdf",
+      source: "NASA",
+      audience: "Advanced learners",
+    },
+  ],
+
+  "comms-systems": [
+    {
+      id: "nasa-dsn-communication",
+      title: "How Do We Communicate With Faraway Spacecraft?",
+      type: "video",
+      description: "Learn how NASA sends commands and receives information using the Deep Space Network.",
+      url: "https://www.nasa.gov/stem-content/deep-space-network-explainer-video-how-do-we-communicate-with-faraway-spacecraft/",
+      source: "NASA",
+      audience: "Grades 5–12",
+    },
+    {
+      id: "nasa-dsn-kids",
+      title: "How Does NASA Communicate with Spacecraft in Deep Space?",
+      type: "lesson",
+      description: "A learner-friendly explanation of radio antennas and deep-space communication.",
+      url: "https://spaceplace.nasa.gov/dsn-antennas/en/",
+      source: "NASA Space Place",
+      audience: "Younger learners",
+    },
+  ],
+
+  "navigation-guidance": [
+    {
+      id: "nasa-spacecraft-tracking",
+      title: "How Do We Know Where Faraway Spacecraft Are?",
+      type: "video",
+      description: "Discover how NASA tracks distant spacecraft using radio signals and the Doppler effect.",
+      url: "https://www.nasa.gov/stem-content/deep-space-network-explainer-video-how-do-we-know-where-faraway-spacecraft-are/",
+      source: "NASA",
+      audience: "Grades 5–12",
+    },
+    {
+      id: "nasa-gravity-radio",
+      title: "How NASA Uses Gravity and Radio Waves to Study Planets and Moons",
+      type: "video",
+      description: "See how scientists use radio signals to investigate planetary motion and gravity.",
+      url: "https://www.nasa.gov/stem-content/how-nasa-uses-gravity-and-radio-waves-to-study-planets-and-moons-video/",
+      source: "NASA",
+      audience: "Grades 5–12",
+    },
+  ],
+
+  "crew-health": [
+    {
+      id: "nasa-fluid-shifts",
+      title: "Our World: Fluid Shift",
+      type: "video",
+      description: "Learn how microgravity changes fluid movement in the human body.",
+      url: "https://science.nasa.gov/eclips/videos/fluid-shift/",
+      source: "NASA eClips",
+      audience: "Grades K–12",
+    },
+    {
+      id: "nasa-human-research",
+      title: "NASA Human Research Program Videos",
+      type: "video",
+      description: "Explore astronaut exercise, blood studies, health, pressure changes and long-duration spaceflight research.",
+      url: "https://www.nasa.gov/hrp/hrp-videos/",
+      source: "NASA Human Research Program",
+      audience: "All learners",
+    },
+  ],
+
+  "human-spaceflight": [
+    {
+      id: "nasa-train-astronaut",
+      title: "Train Like an Astronaut",
+      type: "activity",
+      description: "Physical and inquiry-based activities inspired by astronaut training.",
+      url: "https://www.nasa.gov/stem-content/train-like-an-astronaut/",
+      source: "NASA STEM",
+      audience: "Grades 5–12",
+    },
+    {
+      id: "nasa-astronaut-health",
+      title: "NASA Human Research Program Videos",
+      type: "video",
+      description: "See how NASA studies the effects of spaceflight on the human body.",
+      url: "https://www.nasa.gov/hrp/hrp-videos/",
+      source: "NASA",
+      audience: "All learners",
+    },
+  ],
+
+  "space-weather": [
+    {
+      id: "nasa-space-weather-video",
+      title: "Real World: Space Weather",
+      type: "video",
+      description: "Understand solar activity and how space weather affects Earth and spacecraft.",
+      url: "https://science.nasa.gov/eclips/videos/space-weather/",
+      source: "NASA eClips",
+      audience: "Grades K–8",
+    },
+    {
+      id: "nasa-donki",
+      title: "NASA DONKI Space Weather Database",
+      type: "data",
+      description: "Explore recorded solar flares, coronal mass ejections, solar energetic particles and geomagnetic storms.",
+      url: "https://ccmc.gsfc.nasa.gov/tools/DONKI/",
+      source: "NASA Community Coordinated Modeling Center",
+      audience: "Advanced learners",
+    },
+  ],
+
+  "radiation": [
+    {
+      id: "nasa-ray-shielding",
+      title: "Ray Shielding Activity",
+      type: "pdf",
+      description: "Investigate how different materials can shield against simulated radiation.",
+      url: "https://www.nasa.gov/stem-content/ray-shielding-activity/",
+      source: "NASA STEM",
+      audience: "Grades K–8",
+    },
+    {
+      id: "nasa-radiation-activity",
+      title: "Activity One: Radiation",
+      type: "activity",
+      description: "Investigate radiation exposure and why shielding matters for deep-space astronauts.",
+      url: "https://www.nasa.gov/stem-content/activity-one-radiation/",
+      source: "NASA STEM",
+      audience: "Grades 5–8",
+    },
+    {
+      id: "nasa-radiation-math",
+      title: "Space Math: Radiation Problems",
+      type: "pdf",
+      description: "Practice mathematical problems involving radiation exposure, rates and shielding.",
+      url: "https://science.nasa.gov/learn/heat/resource/space-math-at-nasa-math-problems-related-to-radiation/",
+      source: "NASA Space Math",
+      audience: "Grades K–12+",
+    },
+  ],
+
+  "orbital-mechanics": [
+    {
+      id: "nasa-orbital-mechanics",
+      title: "Space Flight: The Application of Orbital Mechanics",
+      type: "video",
+      description: "A detailed NASA primer on orbital mechanics, originally intended for college-level physics students.",
+      url: "https://plus.nasa.gov/video/space-flight-the-application-of-orbital-mechanics/",
+      source: "NASA+",
+      audience: "Advanced learners",
+    },
+    {
+      id: "nasa-orbits",
+      title: "STEMonstrations: Orbits",
+      type: "lesson",
+      description: "An astronaut demonstrates spacecraft orbits with a related classroom mathematics activity.",
+      url: "https://www.nasa.gov/stem-content/stemonstrations-orbits/",
+      source: "NASA STEM",
+      audience: "Grades 9–12",
+    },
+    {
+      id: "jpl-horizons",
+      title: "NASA JPL Horizons",
+      type: "data",
+      description: "Explore real solar-system positions, velocities and orbital information for planets, moons and other objects.",
+      url: "https://ssd.jpl.nasa.gov/horizons/app.html",
+      source: "NASA Jet Propulsion Laboratory",
+      audience: "Advanced learners",
+    },
+  ],
+
+  "systems-thinking": [
+    {
+      id: "nasa-stem-catalogue",
+      title: "NASA Science Educational Resource Catalogue",
+      type: "library",
+      description: "Search NASA's educational resources for engineering, science, technology and mission-related learning.",
+      url: "https://www.nasa.gov/stem-content/science-educational-resource-catalog/",
+      source: "NASA STEM",
+      audience: "Educators and learners",
+    },
+    {
+      id: "nasa-iss-reference",
+      title: "International Space Station Reference Guide",
+      type: "pdf",
+      description: "Study how real station systems connect, including power, life support, communications and thermal control.",
+      url: "https://www.nasa.gov/wp-content/uploads/2022/06/508318main_iss_ref_guide_nov2010.pdf",
+      source: "NASA",
+      audience: "Advanced learners",
+    },
+  ],
+
+  "astronomy-101": [
+    {
+      id: "nasa-solar-system",
+      title: "NASA Solar System Exploration",
+      type: "data",
+      description: "Explore NASA information, images and facts about planets, moons, asteroids and comets.",
+      url: "https://science.nasa.gov/solar-system/",
+      source: "NASA Science",
+      audience: "All learners",
+    },
+    {
+      id: "jpl-planet-data",
+      title: "JPL Planetary Orbits and Ephemerides",
+      type: "data",
+      description: "Explore accurate planetary positions, orbital information and ephemeris data.",
+      url: "https://ssd.jpl.nasa.gov/planets/orbits.html",
+      source: "NASA Jet Propulsion Laboratory",
+      audience: "Advanced learners",
+    },
+  ],
+
+  "human-body-space": [
+    {
+      id: "nasa-fluid-shift-body",
+      title: "Our World: Fluid Shift",
+      type: "video",
+      description: "Watch how fluid movement changes in microgravity and how NASA studies those changes.",
+      url: "https://science.nasa.gov/eclips/videos/fluid-shift/",
+      source: "NASA eClips",
+      audience: "Grades K–12",
+    },
+    {
+      id: "nasa-bone-muscle",
+      title: "How Space Exploration Affects Bones and Muscles",
+      type: "video",
+      description: "Explore the effects of microgravity on bones, muscles and astronaut fitness.",
+      url: "https://www.nasa.gov/hrp/hrp-videos/",
+      source: "NASA Human Research Program",
+      audience: "All learners",
+    },
+    {
+      id: "nasa-exercise",
+      title: "Physically Fit on Earth and Beyond",
+      type: "video",
+      description: "Explore how exercise helps astronauts maintain strength and health in reduced gravity.",
+      url: "https://science.nasa.gov/eclips/videos/physically-fit-on-earth-and-beyond/",
+      source: "NASA eClips",
+      audience: "Grades 3–12",
+    },
+  ],
+};
+
+export function getModuleResources(moduleId) {
+  return ACADEMY_RESOURCES[moduleId] || [];
+}
+
+
 export const ALL_LESSONS = ACADEMY_MODULES.flatMap((module) =>
   module.lessons.map((lesson) => ({ ...lesson, moduleId: module.id, moduleTitle: module.title })),
 );

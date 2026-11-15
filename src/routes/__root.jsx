@@ -10,7 +10,9 @@ import { NotFound } from "@/components/NotFound";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/lib/AuthContext";
 
+
 import appCss from "@/index.css?url";
+
 
 export const Route = createRootRoute({
   head: () => ({
