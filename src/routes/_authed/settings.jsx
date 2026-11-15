@@ -1,4 +1,3 @@
-
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
@@ -12,6 +11,7 @@ import {
   Accessibility,
   Vibrate,
   BookOpen,
+  Languages,
 } from "lucide-react";
 import { updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
@@ -19,7 +19,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/lib/AuthContext";
-import { saveUserProfile, saveUserPreferences, DEFAULT_USER_PREFERENCES } from "@/lib/user-profile";
+import {
+  saveUserProfile,
+  saveUserPreferences,
+  DEFAULT_USER_PREFERENCES,
+  ASTRA_LANGUAGES,
+} from "@/lib/user-profile";
 
 export const Route = createFileRoute("/_authed/settings")({
   component: SettingsPage,
@@ -129,10 +134,10 @@ function SettingsPage() {
     }
   }
 
-  function updatePreference(key, checked) {
+  function updatePreference(key, value) {
     setPreferences((current) => ({
       ...current,
-      [key]: checked,
+      [key]: value,
     }));
     setPreferenceStatus(null);
   }
@@ -150,7 +155,7 @@ function SettingsPage() {
       await saveUserPreferences(auth.currentUser, preferences);
       await refresh();
 
-      setPreferenceStatus("Accessibility preferences saved.");
+      setPreferenceStatus("Your language and accessibility preferences were saved.");
     } catch (error) {
       console.error("Preference update failed:", error);
       setPreferenceStatus("Could not save preferences. Please try again.");
@@ -223,6 +228,39 @@ function SettingsPage() {
 
       <form onSubmit={savePreferences} className="panel space-y-5 p-5">
         <div>
+          <p className="flex items-center gap-2 text-sm font-semibold">
+            <Languages className="h-4 w-4 text-primary" />
+            ASTRA language
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Choose the language ASTRA should use when explaining space science
+            and answering your questions.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="astra-language">Preferred language</Label>
+          <select
+            id="astra-language"
+            value={preferences.language || "en"}
+            onChange={(event) =>
+              updatePreference("language", event.target.value)
+            }
+            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+          >
+            {ASTRA_LANGUAGES.map((language) => (
+              <option key={language.code} value={language.code}>
+                {language.label}
+              </option>
+            ))}
+          </select>
+          <p className="text-xs text-muted-foreground">
+            Spoken language availability depends on the voices installed on
+            your device and browser.
+          </p>
+        </div>
+
+        <div className="border-t border-border/60 pt-5">
           <p className="flex items-center gap-2 text-sm font-semibold">
             <Accessibility className="h-4 w-4 text-primary" />
             Sensory & accessibility preferences
