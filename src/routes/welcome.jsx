@@ -1,3 +1,4 @@
+
 import { createFileRoute } from "@tanstack/react-router";
 import WelcomeNav from "@/components/welcome/WelcomeNav";
 import WelcomeHero from "@/components/welcome/WelcomeHero";
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/welcome")({
       {
         name: "description",
         content:
-          "Discover the universe, explore the science of space and experience astronaut missions with the Junior Astronaut Mission Trainer.",
+          "Discover the universe, explore space science and experience astronaut missions with the Junior Astronaut Mission Trainer.",
       },
     ],
   }),
@@ -27,22 +28,33 @@ export const Route = createFileRoute("/welcome")({
 function WelcomePage() {
   const scrollTo = (id) => {
     if (typeof document === "undefined") return;
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
     <div className="relative isolate min-h-screen overflow-x-hidden">
       <CinematicBackdrop />
+
       <WelcomeNav onNavigate={scrollTo} />
+
       <main>
         <WelcomeHero onExplore={() => scrollTo("about")} />
-        <AboutPlatform />
+
+        <section id="about">
+          <AboutPlatform />
+        </section>
+
         <ExploreFeatures />
         <HowItWorks />
         <WhyAstronaut />
         <AstraIntro />
         <FinalCallToAction />
       </main>
+
       <WelcomeFooter onNavigate={scrollTo} />
     </div>
   );
