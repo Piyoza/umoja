@@ -1,4 +1,3 @@
-
 import {
   doc,
   getDoc,
@@ -8,7 +7,22 @@ import {
 
 import { db } from "@/lib/firebase";
 
-// Default sensory and accessibility preferences.
+// Languages ASTRA can use for text and spoken responses.
+export const ASTRA_LANGUAGES = [
+  { code: "en", label: "English", speechLocale: "en-ZA" },
+  { code: "zu", label: "isiZulu", speechLocale: "zu-ZA" },
+  { code: "xh", label: "isiXhosa", speechLocale: "xh-ZA" },
+  { code: "st", label: "Sesotho", speechLocale: "st-ZA" },
+  { code: "af", label: "Afrikaans", speechLocale: "af-ZA" },
+  { code: "fr", label: "French", speechLocale: "fr-FR" },
+  { code: "es", label: "Spanish", speechLocale: "es-ES" },
+  { code: "pt", label: "Portuguese", speechLocale: "pt-PT" },
+  { code: "ar", label: "Arabic", speechLocale: "ar-SA" },
+  { code: "hi", label: "Hindi", speechLocale: "hi-IN" },
+  { code: "sw", label: "Swahili", speechLocale: "sw-KE" },
+];
+
+// Default sensory, accessibility and language preferences.
 export const DEFAULT_USER_PREFERENCES = {
   soundEffects: false,
   audioNarration: false,
@@ -17,6 +31,7 @@ export const DEFAULT_USER_PREFERENCES = {
   plainLanguage: false,
   highContrast: false,
   hapticFeedback: false,
+  language: "en",
 };
 
 export async function ensureUserProfile(user) {
@@ -76,16 +91,27 @@ export async function saveUserProfile(user, updates) {
   return (await getDoc(profileRef)).data();
 }
 
-// Save accessibility preferences independently of profile and progress.
+// Save accessibility and language preferences independently
+// of the learner's profile and progress.
 export async function saveUserPreferences(user, updates) {
   if (!user?.uid) {
     throw new Error("A signed-in user is required.");
   }
 
   const preferences = {};
+  const supportedLanguages = ASTRA_LANGUAGES.map(
+    (language) => language.code
+  );
 
   for (const key of Object.keys(DEFAULT_USER_PREFERENCES)) {
-    if (typeof updates?.[key] === "boolean") {
+    if (key === "language") {
+      if (
+        typeof updates?.language === "string" &&
+        supportedLanguages.includes(updates.language)
+      ) {
+        preferences.language = updates.language;
+      }
+    } else if (typeof updates?.[key] === "boolean") {
       preferences[key] = updates[key];
     }
   }
