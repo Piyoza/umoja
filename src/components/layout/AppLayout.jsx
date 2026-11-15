@@ -41,10 +41,6 @@ export default function AppLayout({ children }) {
             </p>
 
             <div className="ml-auto flex items-center gap-2">
-              <span className="hidden items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-400 sm:flex">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse-warn" />
-                Systems Nominal
-              </span>
               <UserMenu />
             </div>
           </div>
