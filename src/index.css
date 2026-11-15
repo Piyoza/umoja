@@ -126,28 +126,3 @@
 .animate-float-slow {
   animation: float-slow 7s ease-in-out infinite;
 }
-
-/* Global accessibility preferences */
-
-[data-high-contrast="true"] {
-  --foreground: 0 0% 100%;
-  --muted-foreground: 0 0% 88%;
-  --border: 0 0% 65%;
-  --input: 0 0% 65%;
-  --ring: 48 100% 60%;
-}
-
-[data-high-contrast="true"] :focus-visible {
-  outline: 3px solid hsl(48 100% 60%);
-  outline-offset: 3px;
-}
-
-[data-reduced-motion="true"],
-[data-reduced-motion="true"] *,
-[data-reduced-motion="true"] *::before,
-[data-reduced-motion="true"] *::after {
-  animation-duration: 0.01ms !important;
-  animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
-  scroll-behavior: auto !important;
-}

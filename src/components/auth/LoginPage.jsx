@@ -42,7 +42,6 @@ export function LoginPage() {
       title="Welcome back"
       subtitle="Log in to your account"
     >
-      <OrDivider />
       <AuthError>{error}</AuthError>
 
       <form onSubmit={submit} className="space-y-4">
